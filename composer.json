@@ -1,0 +1,22 @@
+{
+  "name": "FitdevPro/app-runner",
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://fitdev.pro",
+  "authors": [
+    {
+      "name": "Karol Kondraciuk",
+      "email": "karol.kondraciuk@fitdev.pro",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "psr/log": "^1.0",
+    "psr/http-message": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "FitdevPro\\FitAppRunner\\": "src/"
+    }
+  }
+}
