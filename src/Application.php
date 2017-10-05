@@ -33,9 +33,9 @@ class Application
 
         $this->request = $this->di->get('request');
         $this->response = $this->di->get('response');
+        $this->emitter = $this->di->get('responseEmitter');
 
         $this->middleware = $this->di->get('middleware');
-        $this->emitter = $this->di->get('requestEmitter');
     }
 
     public function handle()
