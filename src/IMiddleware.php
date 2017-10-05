@@ -8,5 +8,5 @@ namespace FitdevPro\FitAppRunner;
  */
 interface IMiddleware
 {
-    public function handle(IServerRequest $request, IResponse $response);
+    public function __invoke(IServerRequest $request, IResponse $response, callable $next = null);
 }

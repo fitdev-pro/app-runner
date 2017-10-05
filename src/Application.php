@@ -26,6 +26,7 @@ class Application
     /**
      * Application constructor.
      * @param IDependencyContainer $di
+     * @throws \Exception
      */
     public function __construct(IDependencyContainer $di)
     {
@@ -36,6 +37,26 @@ class Application
         $this->emitter = $this->di->get('responseEmitter');
 
         $this->middleware = $this->di->get('middleware');
+
+        $this->checkDependencies();
+    }
+
+    private function checkDependencies(){
+        if( !$this->request instanceof IResponse ){
+            throw new \Exception('Service "request" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IResponse, instance of '.get_class($this->request).' given.');
+        }
+
+        if( !$this->response instanceof IServerRequest ){
+            throw new \Exception('Service "response" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IServerRequest, instance of '.get_class($this->response).' given.');
+        }
+
+        if( !$this->emitter instanceof IResponseEmitter ){
+            throw new \Exception('Service "responseEmitter" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IResponseEmitter, instance of '.get_class($this->response).' given.');
+        }
+
+        if( !$this->middleware instanceof IMiddlewareHundler ){
+            throw new \Exception('Service "middleware" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IMiddlewareHundler, instance of '.get_class($this->response).' given.');
+        }
     }
 
     public function handle()
