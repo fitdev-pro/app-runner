@@ -42,11 +42,11 @@ class Application
     }
 
     private function checkDependencies(){
-        if( !$this->request instanceof IResponse ){
+        if( !$this->request instanceof IServerRequest ){
             throw new \Exception('Service "request" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IResponse, instance of '.get_class($this->request).' given.');
         }
 
-        if( !$this->response instanceof IServerRequest ){
+        if( !$this->response instanceof IResponse ){
             throw new \Exception('Service "response" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IServerRequest, instance of '.get_class($this->response).' given.');
         }
 
