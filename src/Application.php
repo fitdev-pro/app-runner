@@ -35,7 +35,7 @@ class Application
     /**
      * Application constructor.
      * @param ContainerInterface $di
-     * @throws \Exception
+     * @throws ApplicationException
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
@@ -54,23 +54,23 @@ class Application
     }
 
     /**
-     * @throws \Exception
+     * @throws ApplicationException
      */
     private function checkDependencies(){
         if( !$this->request instanceof ServerRequestInterface ){
-            throw new \Exception('Service "request" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Message\ServerRequestInterface;, instance of '.get_class($this->request).' given.');
+            throw new ApplicationException('Service "request" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Message\ServerRequestInterface;, instance of '.get_class($this->request).' given.');
         }
 
         if( !$this->emitter instanceof ResponseEmitterInterface ){
-            throw new \Exception('Service "responseEmitter" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\ResponseEmitterInterface, instance of '.get_class($this->response).' given.');
+            throw new ApplicationException('Service "responseEmitter" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\ResponseEmitterInterface, instance of '.get_class($this->response).' given.');
         }
 
         if( !$this->middleware instanceof MiddlewareInterface ){
-            throw new \Exception('Service "middleware" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Server\MiddlewareInterface, instance of '.get_class($this->response).' given.');
+            throw new ApplicationException('Service "middleware" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Server\MiddlewareInterface, instance of '.get_class($this->response).' given.');
         }
 
         if( !$this->requestHandler instanceof RequestHandlerInterface ){
-            throw new \Exception('Service "middleware" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Server\RequestHandlerInterface, instance of '.get_class($this->response).' given.');
+            throw new ApplicationException('Service "middleware" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Server\RequestHandlerInterface, instance of '.get_class($this->response).' given.');
         }
     }
 
