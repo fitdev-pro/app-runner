@@ -57,12 +57,12 @@ class Application
      * @throws \Exception
      */
     private function checkDependencies(){
-        if( !$this->request instanceof ResponseInterface ){
-            throw new \Exception('Service "request" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Message\ResponseInterface, instance of '.get_class($this->request).' given.');
+        if( !$this->request instanceof ServerRequestInterface ){
+            throw new \Exception('Service "request" passed to FitdevPro\FitAppRunner\Application must implement interface Psr\Http\Message\ServerRequestInterface;, instance of '.get_class($this->request).' given.');
         }
 
         if( !$this->emitter instanceof ResponseEmitterInterface ){
-            throw new \Exception('Service "responseEmitter" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\IResponseEmitter, instance of '.get_class($this->response).' given.');
+            throw new \Exception('Service "responseEmitter" passed to FitdevPro\FitAppRunner\Application must implement interface FitdevPro\FitAppRunner\ResponseEmitterInterface, instance of '.get_class($this->response).' given.');
         }
 
         if( !$this->middleware instanceof MiddlewareInterface ){
