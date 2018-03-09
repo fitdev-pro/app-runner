@@ -5,8 +5,10 @@ namespace FitdevPro\FitAppRunner;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Interface IResponse
+ * Interface IResponseEmitter
  * @package FitdevPro\FitAppRunner
  */
-interface IResponse extends ResponseInterface
-{}
+interface ResponseEmitterInterface
+{
+    public function emit(ResponseInterface $response);
+}
